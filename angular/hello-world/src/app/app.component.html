@@ -1,0 +1,33 @@
+<h1>My website</h1>
+
+<button (click)="writeArticle()">write article</button>
+
+  <app-article
+      *ngFor="let article of articles"
+      [article]="article">
+  </app-article>
+
+{{ counter }}
+
+<button (click)="increment()">click</button>
+
+
+<button (click)="toggleMenu()">drop down</button>
+
+<div class="menu" *ngIf="menuOpened">
+  <li><a href="https://google.com">Google</a></li>
+  <li><a href="https://ibm.com">IBM</a></li>
+</div>
+
+<p>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos debitis omnis ab autem quisquam molestias dolorum modi cupiditate quos temporibus. Facilis laboriosam earum nulla numquam sunt delectus quod, quam sapiente.
+</p>
+<p>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos debitis omnis ab autem quisquam molestias dolorum modi cupiditate quos temporibus. Facilis laboriosam earum nulla numquam sunt delectus quod, quam sapiente.
+</p>
+<p>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos debitis omnis ab autem quisquam molestias dolorum modi cupiditate quos temporibus. Facilis laboriosam earum nulla numquam sunt delectus quod, quam sapiente.
+</p>
+<p>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos debitis omnis ab autem quisquam molestias dolorum modi cupiditate quos temporibus. Facilis laboriosam earum nulla numquam sunt delectus quod, quam sapiente.
+</p>

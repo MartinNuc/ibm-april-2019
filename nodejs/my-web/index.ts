@@ -18,6 +18,7 @@ function auditMiddleware(req: Request, res: Response, next: NextFunction) {
   });
   console.log(logs);
   next();
+  return undefined;
 }
 
 app.use(auditMiddleware);
