@@ -1,4 +1,4 @@
-# Recap for Monday
+# Recap of Monday
 
 ## What is nodejs?
 

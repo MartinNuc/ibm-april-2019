@@ -1,15 +1,34 @@
 <h1>My website</h1>
 
+
+
+
+<div [ngClass]="textStyling">
+  I am morphing text.
+</div>
+
+<button (click)="toggleColor()">
+  change color
+</button>
+<button (click)="toggleFontSize()">
+  change fontsize
+</button>
+
+<app-article-counter></app-article-counter>
+
+
 <button (click)="writeArticle()">write article</button>
 
   <app-article
-      *ngFor="let article of articles"
+      *ngFor="let article of articlesService.articles"
+      (delete)="removeArticle(article)"
       [article]="article">
   </app-article>
 
-{{ counter }}
+<div class="counter">
+  <button (click)="increment()">{{ counter }}</button>
+</div>
 
-<button (click)="increment()">click</button>
 
 
 <button (click)="toggleMenu()">drop down</button>

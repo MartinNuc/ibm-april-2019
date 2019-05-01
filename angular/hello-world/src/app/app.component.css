@@ -5,3 +5,21 @@
   padding: 5px;
 }
 
+.counter {
+  background: salmon;
+  border: 1px solid gray;
+  padding: 10px;
+  margin: 10px;
+}
+
+.counter button {
+  padding: 10px 15px;
+}
+
+.large {
+  font-size: 30px
+}
+
+.red {
+  color: red;
+}

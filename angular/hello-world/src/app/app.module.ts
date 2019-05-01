@@ -3,11 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ArticleComponent } from './article/article.component';
+import { WordsCounterPipe } from './words-counter.pipe';
+import { ArticleCounterComponent } from './article-counter/article-counter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ArticleComponent
+    ArticleComponent,
+    WordsCounterPipe,
+    ArticleCounterComponent
   ],
   imports: [
     BrowserModule

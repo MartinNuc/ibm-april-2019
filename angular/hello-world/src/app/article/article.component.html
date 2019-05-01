@@ -1,5 +1,9 @@
-<h1>{{article.title}}</h1>
-<p>
-  {{article.text}}
-</p>
-{{article.timestamp}}
+<div>
+  <h1>{{article.title}}</h1>
+  <div>Created at: {{article.timestamp | date: 'mediumTime'}}</div>
+  <div># words: {{ article.text | wordsCounter }}</div>
+  <p>
+    {{article.text}}
+  </p>
+  <button (click)="notifyParent()">delete</button>
+</div>

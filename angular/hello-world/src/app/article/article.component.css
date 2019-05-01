@@ -1,4 +1,11 @@
 
+:host {
+  display: block;
+  padding: 5px;
+  margin: 10px;
+  background: pink;
+}
+
 h1 {
   color: red;
 }
