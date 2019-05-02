@@ -45,7 +45,7 @@ object - {}, { age: 20 }
 for object with known properties -> create interface
 
 generation, clock speed, L2 cache
-
+```
 interface Processor {
   generation: string;
   clockSpeed: number;
@@ -64,9 +64,9 @@ let computer: Computer = {
     l2Cache: 8
   }
 }
-
+```
 array - 
-
+```
 let myVariable: string[] = [];
 let myVariable: number[] = [];
 let myVariable: Array<number> = [1,2,3];
@@ -74,7 +74,7 @@ let myVariable: Array<number> = [1,2,3];
 class Array<T> {
 
 }
-
+```
 
 
 
@@ -96,22 +96,24 @@ class Array<T> {
 let myVariable: number;
 
 JS:
+```
 class Component {
 
   constructor() {
     this.myVariable = 'something';
   }
 }
-
+```
 TS:
+```
 class Component {
   myVariable = 'something';
 }
 
 let c = new Component();
+```
 
-
-
+```
 class Dog {
   //------------- name: string;
   constructor(public name: string) {
@@ -127,7 +129,7 @@ let rex: Dog = new Dog('Rex');
 rex.bark();
 let lassie = new Dog('Lassie');
 lassie.bark();
-
+```
 
 
 
@@ -164,7 +166,7 @@ let x;
 
 
 
-npm install -g typescript
+> npm install -g typescript
 
 
 
@@ -177,14 +179,15 @@ npm install -g typescript
 
 CommonJS
 
+```
 module.exports = {}
 
 const myModule = require('./my-module');
+```
 
 
 
-
-
+```
 export function x() 
 export class Person {}
 export default function y()
@@ -193,7 +196,7 @@ export default function y()
 import {x as renamedX } from './my-module';
 renamedX();
 import renamedYFunction from './my-module';
-
+```
 
 
 
@@ -211,10 +214,10 @@ import renamedYFunction from './my-module';
 - not when written in TS or has already types in it
 - npm i @types/<name-of-lib>
 
-
+```
 import lodash from 'lodash'
 import express from 'express'
-
+```
 
 
 
@@ -230,6 +233,7 @@ import express from 'express'
 
 ## What is an interface?
 
+```
 interface Person {
   name: string;
   age: number;
@@ -245,7 +249,7 @@ class Employee implement Person {
 }
 
 let john: Person = new Employee('John', 23);
-
+```
 
 
 
@@ -278,7 +282,7 @@ let john: Person = new Employee('John', 23);
 
 ## Do you know how to use access modificators (public/private/protected)?
 
-
+```
 class Elevator {
   private currentFloor: number = 0;
   private doorClosed = false;
@@ -300,7 +304,7 @@ let blockDElevator = new Elevator();
 // blockDElevator.currentFloor = 5;
 blockDElevator.moveUp();
 let blockCElevator = new Elevator();
-
+```
 
 
 
@@ -317,10 +321,11 @@ let blockCElevator = new Elevator();
 
 ## What is union type?
 
+```
 type Container = number | string | Person;
 
 let myVariable: Container = 5;
-
+```
 
 
 
@@ -343,13 +348,13 @@ Array<>
 
 Promise<>
 
-
+```
 let myPromise = new Promise<number>((resolve, reject) => {
   resolve(5);
 })
 
 myPromise.then((data: number) => console.log(data)) /// 5
-
+```
 
 
 
@@ -375,7 +380,7 @@ framework - client side application - runs in browser
 
 ## How do you create an Angular project?
 
-ng new <name>
+> ng new <name>
 
 
 
@@ -392,8 +397,8 @@ ng new <name>
 
 ## How do you create a component?
 
-ng generate component
-ng g c
+> ng generate component
+> ng g c
 
 
 
@@ -414,15 +419,16 @@ css - stylesheet
 ts - class
 spec.ts
 
+```
 class Component {
   nameOfVariable = 5;
 }
-
+```
 
 HTML:
+```
 {{ nameOfVariable }}
-
-
+```
 
 
 
@@ -439,16 +445,19 @@ click
 hover
 
 HTML
-
+```
 <a href="https://google.com" (click)="methodToExecute()">link</a>
 <a href="https://google.com" onclick="methodToExecute">link</a>
+```
 
 TS:
+```
 class Component {
   methodToExecute() {
     console.log('clicked');
   }
 }
+```
 
 
 
@@ -465,14 +474,16 @@ class Component {
 
 ## How do you show/hide stuff?
 
+```
 <div *ngIf="currentFloor === 5">
   Top floor
 </div>
-
+```
+```
 class Component {
   currentFloor = 5;
-
 }
+```
 
 
 
@@ -490,6 +501,7 @@ class Component {
 
 ## How do you iterate over an array inside of a template?
 
+```
 class Component {
   articles = [
     {},
@@ -497,14 +509,15 @@ class Component {
     {}
   ]
 }
-
+```
 
 HTML:
 
+```
 <div *ngFor="let item of articles">
   {{item}}
 </div>
-
+```
 
 
 
@@ -561,16 +574,20 @@ inputs, outputs
 Input
 - passing data from the parent to child
 
+```
 class ParentComponent {
   nameStoredInParent = 'John';
 }
+```
 
 parent HTML:
 
+```
 <app-child [name]="nameStoredInParent"></app-child>
-
+```
 
 TS:
+```
 @Component({
   selector: 'app-child'
 })
@@ -578,8 +595,10 @@ class ChildComponent {
   @Input()
   name: string = 'John';
 }
+```
 
+```
 {{ name }}
-
+```
 
 

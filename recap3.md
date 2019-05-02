@@ -2,7 +2,7 @@
 
 ## How to send event to the parent component? How to pass a value?
 
-
+```
 @Component({
   selector: 'app-child'
 })
@@ -26,15 +26,18 @@ class ChildComponent {
     clearTimeout(timeout);
   }
 }
-
+```
 
 HTML parent:
+```
 <div *ngFor="let article of articles">
   <app-child (emitter)="methodInParent($event)"></app-child>
 </div>
+```
 
 TS parent:
 
+```
 class ParentComponent {
   counter = 0;
   methodInParent(params) {
@@ -43,7 +46,7 @@ class ParentComponent {
 
   }
 }
-
+```
 
 Output 
 
@@ -71,14 +74,15 @@ emit
 json - good for debugging
 
 
-
+```
 class Component {
   currentTime = new Date()
 }
+```
 
-
+```
 {{ currentTime | date: 'mediumTime' | lowercase }}
-
+```
 
 
 
@@ -93,8 +97,9 @@ class Component {
 
 ## How do you create your own?
 
-ng g p my-pipe
+> ng g p my-pipe
 
+```
 class MyPipe {
   tranforms(input, params) {
     this.calculateSum();
@@ -105,7 +110,7 @@ class MyPipe {
 
   }
 }
-
+```
 
 
 
@@ -124,15 +129,18 @@ class MyPipe {
 
 ## How does ngClass work?
 
+```
 <div [ngClass]="obj">
 </div>
+```
 
+```
 obj = {
   className: boolean,
   red: false
 }
 obj.red = true;
-
+```
 
 
 
@@ -145,13 +153,14 @@ obj.red = true;
 
 3. easy to test
 
-ng g s users -> UsersService
+> ng g s users -> UsersService
 
 
 
 
 ## How do you use a service from a component?
 
+```
 class Component {
   constructor(
       public service: UsersService,
@@ -163,7 +172,7 @@ class Component {
     this.calculator...
   }
 }
-
+```
 
 
 
@@ -182,13 +191,13 @@ class Component {
 
 ## How do you use a service from a service?
 
+```
 class UsersService {
   constructor(public calculator: CalculatorService) {
 
   }
 }
-
-
+```
 
 
 
@@ -208,7 +217,7 @@ class UsersService {
 
 spec.ts
 
-
+```
 describe('', () => {
 
   it('should do something', () => {
@@ -238,7 +247,7 @@ describe('', () => {
     ...... // test body
   })
 });
-
+```
 
 
 
@@ -257,6 +266,7 @@ describe('', () => {
 
 const result = .... tested thing
 
+```
 expect(result).toBe()
 expect(result).not.toBe()
 expect({
@@ -272,7 +282,7 @@ expect({
   }
 })
 expect(() => testedFunction()).toThrow(Error);
-
+```
 
 
 
@@ -289,6 +299,7 @@ expect(() => testedFunction()).toThrow(Error);
 
 ## How do you test a pipe?
 
+```
 class Pipe {
   constructor(public calculator: CalculatorService) {
 
@@ -298,13 +309,15 @@ class Pipe {
     return 'output' + this.calculator.add(1,5);
   }
 }
+```
 
+```
 it('should work as I expect', () => {
   const calculator = new CalculatorService();
   const pipe = new Pipe(calculator);
   expect(pipe.transform(new Date())).toBe('12th September 2018');
 })
-
+```
 
 
 
@@ -323,10 +336,13 @@ it('should work as I expect', () => {
 
 - have to configure testing module
 
+```
 class Service {
   constructor(calculator: CalculatorService, users: UsersService) {}
 }
+```
 
+```
 beforeEach(() => {
   ...configureTestingModule({
     providers: [
@@ -343,7 +359,7 @@ it('should do something', () => {
   new Service(calc, users) -->
   expect(service.method()).toBe(...)
 })
-
+```
 
 
 
@@ -360,7 +376,7 @@ it('should do something', () => {
 - for asynchronous
 - when we want to do something AFTER it's complete
 
-
+```
 const fs = require('fs');
 
 fs.writeFile('file.txt', 'this is content', () => {
@@ -377,9 +393,11 @@ function writeFilePromised() {
     resolve();
   });
 }
+```
 
-
+```
 const promise = fetch('https://google.com');
 promise.then(response => {
 
 })
+```
