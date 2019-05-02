@@ -17,7 +17,7 @@
 <app-article-counter></app-article-counter>
 
 
-<button (click)="writeArticle()">write article</button>
+<button id="write-article" (click)="writeArticle()">write article</button>
 
   <app-article
       *ngFor="let article of articlesService.articles"
@@ -26,9 +26,10 @@
   </app-article>
 
 <div class="counter">
-  <button #counterButton (click)="increment()">{{ counter }}</button>
+  <button id="counter-button" #counterButton (click)="increment()">{{ counter }}</button>
 </div>
 
+<span id="counter">{{ counter }}</span>
 
 
 <button (click)="toggleMenu()">drop down</button>
