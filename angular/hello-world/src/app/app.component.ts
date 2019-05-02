@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Article } from './article';
-import { VirtualTimeScheduler } from 'rxjs';
+import { VirtualTimeScheduler, Observable } from 'rxjs';
 import { ArticlesService } from './articles.service';
 
 @Component({
@@ -17,10 +17,42 @@ export class AppComponent implements AfterViewInit {
     red: false
   };
 
+  num = 0;
+
   @ViewChild('counterButton')
   counterButton: ElementRef<HTMLButtonElement>;
 
   constructor(public articlesService: ArticlesService) {
+
+    resolveAfterTime(2000)
+      .then(() => console.log('after 2 seconds'));
+
+    const obs$ = interval(2000);
+    obs$.subscribe(num => {
+      this.num = num;
+      console.log(num);
+    });
+
+    function resolveAfterTime(ms) {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve();
+        }, ms);
+      });
+    }
+
+    function interval(ms) {
+      return new Observable<number>(observer => {
+        let x = 0;
+        setInterval(() => {
+          observer.next(x);
+          x++;
+        }, ms);
+      });
+    }
+
+
+
 
   }
 
