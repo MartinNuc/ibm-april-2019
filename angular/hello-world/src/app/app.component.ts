@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Article } from './article';
 import { VirtualTimeScheduler } from 'rxjs';
 import { ArticlesService } from './articles.service';
@@ -8,7 +8,7 @@ import { ArticlesService } from './articles.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   counter = 0;
   menuOpened = false;
 
@@ -17,12 +17,19 @@ export class AppComponent {
     red: false
   };
 
+  @ViewChild('counterButton')
+  counterButton: ElementRef<HTMLButtonElement>;
+
   constructor(public articlesService: ArticlesService) {
 
   }
 
   toggleColor() {
     this.textStyling.red = !this.textStyling.red;
+  }
+
+  ngAfterViewInit() {
+    this.counterButton.nativeElement.disabled = true;
   }
 
   toggleFontSize() {

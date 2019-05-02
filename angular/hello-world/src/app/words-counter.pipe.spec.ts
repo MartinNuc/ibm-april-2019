@@ -1,6 +1,6 @@
 import { WordsCounterPipe } from './words-counter.pipe';
 
-fdescribe('WordsCounterPipe', () => {
+describe('WordsCounterPipe', () => {
   let pipe: WordsCounterPipe;
 
   beforeEach(() => {

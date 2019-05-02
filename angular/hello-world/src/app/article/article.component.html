@@ -2,7 +2,7 @@
   <h1>{{article.title}}</h1>
   <div>Created at: {{article.timestamp | date: 'mediumTime'}}</div>
   <div># words: {{ article.text | wordsCounter }}</div>
-  <p>
+  <p data-test="article">
     {{article.text}}
   </p>
   <button (click)="notifyParent()">delete</button>

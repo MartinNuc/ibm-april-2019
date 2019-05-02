@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { ArticlesService } from './articles.service';
 
-fdescribe('ArticlesService', () => {
+describe('ArticlesService', () => {
   let service: ArticlesService;
   beforeEach(() => {
     TestBed.configureTestingModule({});
