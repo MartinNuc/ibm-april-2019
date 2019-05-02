@@ -53,4 +53,22 @@ fdescribe('AppComponent', () => {
     ).length;
     expect(countAfterAdding).toBe(countBeforeAdding + 1);
   });
+
+  it('should call the service when clicking write article button', () => {
+    const button = fixture.debugElement.query(By.css('#write-article'));
+    const service: ArticlesService = TestBed.get(ArticlesService);
+    spyOn(service, 'writeArticle');
+    button.triggerEventHandler('click', null);
+    expect(service.writeArticle).toHaveBeenCalled();
+  });
+
+  /**
+   * showcase of jasmine.createSpy
+   * doesn't test anything
+   */
+  it('should call spied function', () => {
+    const fn = jasmine.createSpy('fn function');
+    fn();
+    expect(fn).toHaveBeenCalled();
+  });
 });
