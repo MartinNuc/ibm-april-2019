@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CategoriesComponent } from './categories/categories.component';
 import { JokeComponent } from './joke/joke.component';
+import { JokeResolverService } from './joke-resolver.service';
 
 const routes: Routes = [
   {
@@ -10,7 +11,10 @@ const routes: Routes = [
   },
   {
     path: 'joke/:category',
-    component: JokeComponent
+    component: JokeComponent,
+    resolve: {
+      joke: JokeResolverService
+    }
   }
 ];
 
