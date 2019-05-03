@@ -1,0 +1,7 @@
+<ul>
+  <li *ngFor="let category of categories$ | async">
+    <a [routerLink]="['/joke', category]">
+      {{category}}
+    </a>
+  </li>
+</ul>
