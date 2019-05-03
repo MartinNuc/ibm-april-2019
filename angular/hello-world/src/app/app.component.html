@@ -15,14 +15,35 @@
 </button>
 
 <app-article-counter></app-article-counter>
+<h1>New article</h1>
+<pre>{{articleForm.value | json}}</pre>
+<pre>{{articleForm.valid}}</pre>
+<form [formGroup]="articleForm" (ngSubmit)="writeArticle()">
+  <div [ngClass]="{red: titleControl.invalid}">
+    title: <input type="text" formControlName="title">
+  </div>
+  <div>
+    text: <input type="text" formControlName="text">
+  </div>
+  <h2>Author:</h2>
+  <div formGroupName="author">
+    name: <input type="text" formControlName="name">
+    <br>
+    <div [ngClass]="{red: articleForm.controls['author'].controls['email'].invalid}">
+      email: <input type="email" formControlName="email">
+    </div>
+    <div *ngIf="articleForm.controls['author'].controls['email'].errors?.email">
+      Enter correct email please.
+    </div>
+  </div>
+  <button [disabled]="articleForm.invalid" type="submit">Save article</button>
+</form>
 
-<button id="write-article" (click)="writeArticle()">write article</button>
-
-  <app-article
-      *ngFor="let article of articlesService.changes$ | async"
-      (delete)="removeArticle(article)"
-      [article]="article">
-  </app-article>
+<app-article
+    *ngFor="let article of articlesService.changes$ | async"
+    (delete)="removeArticle(article)"
+    [article]="article">
+</app-article>
 
 <div class="counter">
   <button id="counter-button" #counterButton (click)="increment()">{{ counter }}</button>

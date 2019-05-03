@@ -26,7 +26,7 @@ export class ArticlesService {
     this.notifyComponents();
   }
 
-  writeArticle() {
+  writeArticle(title: string, text: string) {
     let id: number;
     if (this.articles.length === 0) {
       id = 1;
@@ -35,8 +35,8 @@ export class ArticlesService {
     }
     const article = {
       id,
-      title: 'title' + id,
-      text: 'bla bla  bla lorem ipsum',
+      title,
+      text,
       timestamp: new Date()
     };
     this.articles.push(article);

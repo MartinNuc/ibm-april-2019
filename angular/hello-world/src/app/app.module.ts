@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { ArticleComponent } from './article/article.component';
 import { WordsCounterPipe } from './words-counter.pipe';
 import { ArticleCounterComponent } from './article-counter/article-counter.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ // everything except services
@@ -14,7 +15,8 @@ import { ArticleCounterComponent } from './article-counter/article-counter.compo
     ArticleCounterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule // ❗️❗️ import forms module to use forms
   ],
   providers: [], // services
   bootstrap: [AppComponent]

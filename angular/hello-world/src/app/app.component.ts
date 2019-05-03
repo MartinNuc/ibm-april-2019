@@ -3,6 +3,7 @@ import { Article } from './article';
 import { VirtualTimeScheduler, Observable, from, interval, Subject } from 'rxjs';
 import { distinctUntilChanged, take, skip, filter } from 'rxjs/operators';
 import { ArticlesService } from './articles.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -22,14 +23,28 @@ export class AppComponent implements AfterViewInit, OnInit {
 
   subj = new Subject();
 
+  articleForm: FormGroup;
+
   @ViewChild('counterButton')
   counterButton: ElementRef<HTMLButtonElement>;
+
+  get titleControl() {
+    return this.articleForm.controls.title;
+  }
 
   constructor(public articlesService: ArticlesService) {
   }
 
   ngOnInit() {
     this.subj.subscribe(x => console.log(x));
+    this.articleForm = new FormGroup({
+      title: new FormControl('', Validators.required),
+      text: new FormControl(''),
+      author: new FormGroup({
+        name: new FormControl(''),
+        email: new FormControl('', [Validators.required, Validators.email])
+      })
+    });
   }
 
   makeSubjectEmit() {
@@ -53,7 +68,12 @@ export class AppComponent implements AfterViewInit, OnInit {
   }
 
   writeArticle() {
-    this.articlesService.writeArticle();
+    const dataFromForm = this.articleForm.value;
+    this.articlesService.writeArticle(
+      dataFromForm.title,
+      dataFromForm.text
+    );
+    this.articleForm.reset();
   }
 
   increment() {
