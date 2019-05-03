@@ -7,7 +7,7 @@ import { WordsCounterPipe } from './words-counter.pipe';
 import { ArticleCounterComponent } from './article-counter/article-counter.component';
 
 @NgModule({
-  declarations: [
+  declarations: [ // everything except services
     AppComponent,
     ArticleComponent,
     WordsCounterPipe,
@@ -16,7 +16,7 @@ import { ArticleCounterComponent } from './article-counter/article-counter.compo
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [], // services
   bootstrap: [AppComponent]
 })
 export class AppModule { }
