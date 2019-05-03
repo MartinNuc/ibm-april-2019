@@ -26,31 +26,6 @@ export class AppComponent implements AfterViewInit, OnInit {
   counterButton: ElementRef<HTMLButtonElement>;
 
   constructor(public articlesService: ArticlesService) {
-    const subs$ = interval(200).subscribe(() => {
-        console.log('tick');
-      },
-      () => console.log('error'),
-      () => console.log('complete')
-    );
-    setTimeout(() => {
-      subs$.unsubscribe();
-    }, 2000);
-    return;
-
-    interval(200).pipe(
-      filter(x => isPrime(x)),
-      skip(5),
-      take(4)
-    ).subscribe(x => console.log(x));
-
-    function isPrime(n) {
-      for (let i = 2; i < n; i++) {
-        if (n % i === 0) {
-          return false;
-        }
-      }
-      return n !== 1 && n !== 0;
-    }
   }
 
   ngOnInit() {

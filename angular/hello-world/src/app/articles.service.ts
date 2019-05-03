@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Article } from './article';
+import { Subject, ReplaySubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticlesService {
+  changes$ = new ReplaySubject<Article[]>(1);
   articles: Article[] = [
     {
       id: 1,
@@ -20,7 +22,9 @@ export class ArticlesService {
     }
   ];
 
-  constructor() {}
+  constructor() {
+    this.notifyComponents();
+  }
 
   writeArticle() {
     let id: number;
@@ -36,6 +40,11 @@ export class ArticlesService {
       timestamp: new Date()
     };
     this.articles.push(article);
+    this.notifyComponents();
+  }
+
+  notifyComponents() {
+    this.changes$.next(this.articles);
   }
 
   findAvailableId(): number {
@@ -53,5 +62,6 @@ export class ArticlesService {
     this.articles = this.articles.filter(
       item => item.id !== article.id
     );
+    this.notifyComponents();
   }
 }

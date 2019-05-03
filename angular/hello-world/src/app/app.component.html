@@ -19,7 +19,7 @@
 <button id="write-article" (click)="writeArticle()">write article</button>
 
   <app-article
-      *ngFor="let article of articlesService.articles"
+      *ngFor="let article of articlesService.changes$ | async"
       (delete)="removeArticle(article)"
       [article]="article">
   </app-article>
